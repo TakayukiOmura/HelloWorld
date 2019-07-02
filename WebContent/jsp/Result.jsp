@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF8"
 	pageEncoding="UTF8"%>
-<%
-	// Servletからデータを受け取る
-	request.setCharacterEncoding("UTF8");
-	String servlet = (String) request.getAttribute("Servlet");
-%>
+
+	<% request.setCharacterEncoding("UTF8"); %>
+
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -13,6 +12,7 @@
 </head>
 <body>
 	<!--Servletから取ってきたデータを表示-->
-	<%=servlet%>
+	<p>${Answer}</p>
+
 </body>
 </html>
