@@ -12,14 +12,14 @@
 
 	<form action="http://localhost:8080/Test/MajorityController" method="post">
 		<input type="text" name="Number" value="" /> <input type="submit"
-			value="送信" /><p>${Error}</p><p>${Answer}</p>
+			value="計算" /><p>${Q1Error}</p><p>${Q1Answer}</p>
 	</form>
 
 	<p>Q2.山手線でスタンプラリー</p>
 
-	<form action="http://localhost:8080/Test/StanpRallyController" method="post">
+	<form action="http://localhost:8080/Test/RallyController" method="post">
 		<input type="text" name="Number" value="" /> <input type="submit"
-			value="17で送信" /><p>${Error}</p><p>${Answer2}</p>
+			value="計算" /><p>${Q2Error}</p><p>${Q2Answer}</p>
 	</form>
 
 </body>

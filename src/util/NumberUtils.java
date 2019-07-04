@@ -2,7 +2,8 @@ package util;
 
 public class NumberUtils{
 	public static boolean isNumber(String str) {
-		//入力値がnullだった場合のfalseを返す
+
+		//入力値がnullだった場合falseを返す
 		if ("".equals(str) || str == null){
 			return false;
 		}

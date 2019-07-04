@@ -9,45 +9,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/StanpRallyController")
-public class StanpRallyController extends HttpServlet {
+import process.RallyProcess;
+import util.NumberUtils;
+
+//JSPからServletをURLで呼び出す場合に末尾に付ける。
+@WebServlet("/RallyController")
+public class RallyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF8");
 
+		//オブジェクト型のNumberをString型に変換
 		String num = (String) (request.getParameter("Number"));
 
-		int InnerTracks = 1;
-		int OuterTracks = 1;
-		//if (NumberUtils.isNumber(num)) {
+		String paramName = "Q2Error";
 
-		int inputnum = (Integer.parseInt(num));
-		int inter = (int) Math.pow(2, inputnum - 2);
-		int outer = (int) Math.pow(2, 27 - inputnum);
-		System.out.println(inter + outer - 1);
+		String msg = "１以上の数字を入力してください";
 
-		for (int i = 0; i < inputnum - 2; i++) {
+		//isNumberメソッドでtrueが返ってきた場合{}内の処理実行
+		if (NumberUtils.isNumber(num)) {
 
-			InnerTracks *= 2;
-
-		}
-		for (int i = 0; i < 29 - inputnum; i++) {
-
-			OuterTracks *= 2;
+			RallyProcess rallyProcess = new RallyProcess();
+			paramName = "Q2Answer";
+			msg = "A:" + rallyProcess.calcRally(Integer.parseInt(num)) + "通り";
 
 		}
 
-		int answer = InnerTracks + OuterTracks - 1;
-		//msg = "A:" + calcmajority.calcMajority(Integer.parseInt(num)) + "通り";
-
-		//}
-
-		request.setAttribute("Answer2", "A:" + answer + "通り");
+		request.setAttribute(paramName, msg);
 		//Input.jsp にページ遷移
 		RequestDispatcher dispatch = request.getRequestDispatcher("jsp/Input.jsp");
 		dispatch.forward(request, response);
 
 	}
-
 }

@@ -21,21 +21,21 @@ public class MajorityController extends HttpServlet {
 		request.setCharacterEncoding("UTF8");
 
 //serviceパッケージのCalcMajorityクラスをインスタンス化
-MajorityProcess calcmajority = new MajorityProcess();
+MajorityProcess majorityProcess = new MajorityProcess();
 
 
 		//	オブジェクト型のNumberをString型に変換
 		String num = (String) (request.getParameter("Number"));
 
-		String paramName = "Error";
+		String paramName = "Q1Error";
 
 		String msg = "１以上の数字を入力してください";
 
 		//isNumberメソッドでtrueが返ってきた場合{}内の処理を実行
-		if (NumberUtils.isNumber(num)){
+		if (NumberUtils.isNumber(num)) {
 
-			paramName = "Answer";
-			msg = "A:" + calcmajority.calcMajority(Integer.parseInt(num)) + "通り";
+			paramName = "Q1Answer";
+			msg = "A:" + majorityProcess.calcMajority(Integer.parseInt(num)) + "通り";
 
 		}
 		request.setAttribute(paramName, msg);
