@@ -18,7 +18,9 @@
 	<p>Q2.山手線でスタンプラリー</p>
 
 	<form action="http://localhost:8080/Test/RallyController" method="post">
-		<input type="text" name="Number" value="" /> <input type="submit"
+		<input type="text" name="StationsNumber" value="" />
+		<<input type="text" name="Number" value="" />
+		<input type="submit"
 			value="計算" /><p>${Q2Error}</p><p>${Q2Answer}</p>
 	</form>
 

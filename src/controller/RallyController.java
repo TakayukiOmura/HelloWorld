@@ -21,7 +21,7 @@ public class RallyController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF8");
 
-		//オブジェクト型のNumberをString型に変換
+		//オブジェクト型のNumberをString型に変換する
 		String num = (String) (request.getParameter("Number"));
 
 		String paramName = "Q2Error";
