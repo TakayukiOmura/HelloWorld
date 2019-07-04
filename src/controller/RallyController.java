@@ -22,18 +22,20 @@ public class RallyController extends HttpServlet {
 		request.setCharacterEncoding("UTF8");
 
 		//オブジェクト型のNumberをString型に変換する
-		String num = (String) (request.getParameter("Number"));
+		String stationNum = (String) request.getParameter("stationNumber");
+		String selectNum = (String) request.getParameter("selectNumber");
 
 		String paramName = "Q2Error";
 
 		String msg = "１以上の数字を入力してください";
 
 		//isNumberメソッドでtrueが返ってきた場合{}内の処理実行
-		if (NumberUtils.isNumber(num)) {
+		if (NumberUtils.isNumber(stationNum) && NumberUtils.isNumber(selectNum)) {
 
 			RallyProcess rallyProcess = new RallyProcess();
 			paramName = "Q2Answer";
-			msg = "A:" + rallyProcess.calcRally(Integer.parseInt(num)) + "通り";
+
+			msg = "A:" + rallyProcess.calcRally(Integer.parseInt(stationNum), Integer.parseInt(selectNum)) + "通り";
 
 		}
 
