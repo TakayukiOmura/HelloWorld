@@ -10,19 +10,33 @@
 
 	<p>Q1.一発で決まる多数決</p>
 
-	<form action="http://localhost:8080/Test/MajorityController" method="post">
+	<form action="http://localhost:8080/Test/MajorityController"
+		method="post">
 		<input type="text" name="Number" value="" /> <input type="submit"
-			value="計算" /><p>${Q1Error}</p><p>${Q1Answer}</p>
+			value="計算" />
+		<p>${Q1Error}</p>
+		<p>${Q1Answer}</p>
 	</form>
 
 	<p>Q2.山手線でスタンプラリー</p>
 
 	<form action="http://localhost:8080/Test/RallyController" method="post">
-		駅の数<input type="text" name="stationNumber" value="" />
-		出場する駅の番号<input type="text" name="selectNumber"value="" />
-		<input type="submit"
-			value="計算" /><p>${Q2Error}</p><p>${Q2Answer}</p>
+		駅の数<input  type="text" name="StationNumber" value="" />
+		出場する駅の番号<input  type="text" name="selectNumber" value="" />
+		<input type="submit"value="計算" />
+		<p>${Q2Error}</p>
+		<p>${Q2Answer}</p>
 	</form>
+
+	<p>Q3.ローマ数字の変換規則</p>
+
+	<form action="http://localhost:8080/Test/NumericalController" method="post">
+		並べる数<input type="text" name="listNumber" value="" />
+		<input type="submit"value="計算" />
+		<p>${Q3Error}</p>
+		<p>${Q3Answer}</p>
+	</form>
+
 
 </body>
 </html>
