@@ -37,6 +37,16 @@
 		<p>${Q3Answer}</p>
 	</form>
 
+	<p>Q4.点灯している量で考えるデジタル時計</p>
+
+	<form action="http://localhost:8080/Test/TimeCountController" method="post">
+		点灯個所の数<input type="text" name="selectNumber" value="" />
+		<input type="submit"value="計算" />
+		<p>${Q4Error}</p>
+		<p>${Q4Answer}</p>
+	</form>
+
+
 
 </body>
 </html>

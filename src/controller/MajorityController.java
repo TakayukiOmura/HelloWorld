@@ -20,9 +20,8 @@ public class MajorityController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF8");
 
-//serviceパッケージのCalcMajorityクラスをインスタンス化
-MajorityProcess majorityProcess = new MajorityProcess();
-
+		//serviceパッケージのCalcMajorityクラスをインスタンス化
+		MajorityProcess majorityProcess = new MajorityProcess();
 
 		//	オブジェクト型のNumberをString型に変換
 		String num = (String) (request.getParameter("Number"));
