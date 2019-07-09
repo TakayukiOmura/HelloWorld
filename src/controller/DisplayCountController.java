@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import process.TimeCountProcess;
+import process.DisplayCountProcess;
 import util.NumberUtils;
 
 //アノテーションJSPからServletをURLで呼び出す場合に末尾に付ける。
-@WebServlet("/TimeCountController")
-public class TimeCountController extends HttpServlet {
+@WebServlet("/DisplayCountController")
+public class DisplayCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -29,13 +29,12 @@ public class TimeCountController extends HttpServlet {
 		String msg = "１以上の数字を入力してください";
 
 		//isNumberメソッドでtrueが返ってきた場合{}内の処理実行
-	if (NumberUtils.isNumber(selectNum)) {
+		if (NumberUtils.isNumber(selectNum)) {
 
 			paramName = "Q4Answer";
 
-
-		TimeCountProcess timeCountProcess = new TimeCountProcess();
-			msg = ("A:" + timeCountProcess.calcTime(Integer.parseInt(selectNum)) + "通り");
+			DisplayCountProcess displayCountProcess = new DisplayCountProcess();
+			msg = ("A:" + displayCountProcess.calcCount(Integer.parseInt(selectNum)) + "通り");
 		}
 		request.setAttribute(paramName, msg);
 
