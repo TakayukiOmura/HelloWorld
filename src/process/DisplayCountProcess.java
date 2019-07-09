@@ -4,31 +4,26 @@ import java.util.ArrayList;
 
 public class DisplayCountProcess {
 
-	//配列の添え字を数字に見立て、対応するディスプレイの点灯個所数を設定する。
-	int array[] = { 6, 2, 5, 5, 4, 5, 6, 3, 7, 6 };
-	int count = 0;
-	private int displayNumber;
 	//何通り有るかを返すメソッド
-
 	public int calcCount(int selectNum) {
 
-		count = calcTime(selectNum);
+		return calcTime(selectNum);
 
-		return count;
+		//return count;
 	}
 
 	//時刻を算出するメソッド
 	private int calcTime(int selectNum) {
 		//取得したディスプレイの数を詰める可変長配列resultArrayを設定
 		ArrayList<Integer> resultArray = new ArrayList<>();
-
+		int count = 0;
 		for (int hour = 0; hour < 24; hour++) {
 
 			for (int minutes = 0; minutes < 60; minutes++) {
 
 				for (int seconds = 0; seconds < 60; seconds++) {
 					//3重for文で時間、分、秒を算出し、時刻を取得する。
-					displayNumber = calcDisplay(hour, minutes, seconds);
+					int displayNumber = calcDisplay(hour, minutes, seconds);
 
 					resultArray.add(displayNumber);
 				}
@@ -39,6 +34,7 @@ public class DisplayCountProcess {
 		for (int i = 0; i < resultArray.size(); i++) {
 			//resultArrayに詰めたdisplayNumberの値が一緒であればcount++する。
 			if (resultArray.get(i) == selectNum) {
+
 				count++;
 			}
 		}
@@ -48,6 +44,10 @@ public class DisplayCountProcess {
 
 	//時刻から点灯しているディスプレイを算出するメソッド。
 	private int calcDisplay(int hour, int minutes, int seconds) {
+
+		//配列の添え字を数字に見立て、対応するディスプレイの点灯個所数を設定する。
+		int array[] = { 6, 2, 5, 5, 4, 5, 6, 3, 7, 6 };
+
 		//時間の10の位
 		int hourTen = hour / 10;
 		//時間の1の位
