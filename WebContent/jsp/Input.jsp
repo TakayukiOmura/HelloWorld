@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<jsp:useBean id="pascalBeans" class="dto.PascalBeans" scope="request" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +49,13 @@
 		<p>${Q4Answer}</p>
 	</form>
 
+	<p>Q5.枚数で考えるパスカルの三角形</p>
 
-
+	<form action="http://localhost:8080/Test/PascalCountController"
+		method="post">
+		パスカルの三角形の段数を入力してください<input type="text" name="stageNumber" value="" /> <input
+			type="submit" value="計算" />
+	</form>
+	<p>${pascalBeans.answer}</p>
 </body>
 </html>
