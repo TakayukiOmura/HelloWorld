@@ -39,6 +39,8 @@ public class RallyController extends HttpServlet {
 
 		}
 
+
+
 		request.setAttribute(paramName, msg);
 		//Input.jsp にページ遷移
 		RequestDispatcher dispatch = request.getRequestDispatcher("jsp/Input.jsp");

@@ -62,8 +62,11 @@ public class SeatBinarySearch {
 
 		int count = 0;
 		double left = 1;
+		//人口の最大値
 		double right = 13515271;
+		//中間値
 		double mid = (left + right) / 2;
+
 		while (left != right) {
 			count = 0;
 			mid = (left + right) / 2;
@@ -78,7 +81,7 @@ public class SeatBinarySearch {
 
 					left = right;
 				}
-				System.out.println(" 割った数:" + mid);
+				System.out.println("割った数:" + (int)mid);
 			} else if (289 > count) {
 				right = mid;
 			} else {

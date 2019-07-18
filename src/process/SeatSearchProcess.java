@@ -1,16 +1,83 @@
 package process;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
+import dto.SeatSearchBeans;
+
+//全体の議席数から線形探索と二部探索を用いて各県の議席数を計算し、beansにその答えを詰めるクラス
 public class SeatSearchProcess {
 
-	public static void main(String[] args) throws Exception {
+	//オブジェクト型の引数seatSearchBeansをSeatLinearSearchControllerから取得
+	public void calcLinearSearch(SeatSearchBeans seatSearchBeans, int seatNum) {
+
+		seatSearchBeans = new SeatSearchBeans();
+		seatSearchBeans.setMsg("UNKO");
+
+		Map<String, Integer> prefectureMap = createMap();
+
+		//1から最大人口の数値までで割る
+		for (double i = 1; i < 13515271; i++) {
+			int count = 0;
+			for (String key : prefectureMap.keySet()) {
+				count += Math.ceil((prefectureMap.get(key) / i));
+			}
+			if (count == seatNum) {
+				String[] linearArray = new String[47];
+				int j = 0;
+				for (String key : prefectureMap.keySet()) {
+					linearArray[j] = (key + ":" + (int) Math.ceil((prefectureMap.get(key) / i)) + "席");
+					j++;
+				}
+				seatSearchBeans.setSeat(linearArray);
+				return;
+			}
+		}
+	}
+
+	//オブジェクト型の引数seatSearchBeansをSeatBinarySearchControllerから取得
+	public void calcBinarySearch(SeatSearchBeans seatSearchBeans, int seatNum) {
+
+		//seatSearchBeans = new SeatSearchBeans();
+		seatSearchBeans.setMsg("UNKO"
+				+ ""
+				+ "");
+
+		LinkedHashMap<String, Integer> prefectureMap = createMap();
+
+		double left = 1;
+		//人口の最大値を表す変数right
+		double right = 13515271;
+		//中間値を表す変数mid
+		double mid = (left + right) / 2;
+
+		while (left != right) {
+			int count = 0;
+			mid = (left + right) / 2;
+			for (String key : prefectureMap.keySet()) {
+				count += (int) Math.ceil((prefectureMap.get(key) / mid));
+			}
+		if (count == seatNum) {
+				String[] binaryArray = new String[47];
+				int j = 0;
+				for (String key : prefectureMap.keySet()) {
+					binaryArray[j] = (key + ":" + (int) Math.ceil((prefectureMap.get(key) / mid)) + "席");
+					j++;
+				}
+				seatSearchBeans.setSeat(binaryArray);
+				return;
+			} else if (seatNum > count) {
+				right = mid;
+			} else {
+				left = mid;
+			}
+				}
+	}
+
+	private LinkedHashMap<String, Integer> createMap() {
 
 		// Mapの宣言
 		LinkedHashMap<String, Integer> prefecture = new LinkedHashMap<>();
-
-		//MapにValueを格納
-		//MapのKeyに都道府県名、valueに人口を代入
 
 		prefecture.put("北海道", 5381733);
 		prefecture.put("青森県", 1308265);
@@ -60,76 +127,7 @@ public class SeatSearchProcess {
 		prefecture.put("鹿児島県", 1648177);
 		prefecture.put("沖縄県", 1433566);
 
-		for (double i = 478664; i < 1000000; i++) {
-			int count = 0;
-
-			for (String key : prefecture.keySet()) {
-
-				count += Math.ceil((prefecture.get(key) / i));
-
-			}
-			if (count == 289) {
-				System.out.println(" 割った数:" + i);
-				for (String key : prefecture.keySet()) {
-
-					System.out.println(key + ":" + (int) Math.ceil((prefecture.get(key) / i)) + "席");
-
-				}
-				System.out.println(count);
-				break;
-			}
-
-		}
-
+		return prefecture;
 	}
-}
 
-//割った数:478510.0
-//北海道:12席
-//青森県:3席
-//岩手県:3席
-//宮城県:5席
-//秋田県:3席
-//山形県:3席
-//福島県:4席
-//茨城県:7席
-//栃木県:5席
-//群馬県:5席
-//埼玉県:16席
-//千葉県:14席
-//東京都:29席
-//神奈川県:20席
-//新潟県:5席
-//富山県:3席
-//石川県:3席
-//福井県:2席
-//山梨県:2席
-//長野県:5席
-//岐阜県:5席
-//静岡県:8席
-//愛知県:16席
-//三重県:4席
-//滋賀県:3席
-//京都府:6席
-//大阪府:19席
-//兵庫県:12席
-//奈良県:3席
-//和歌山県:3席
-//鳥取県:2席
-//島根県:2席
-//岡山県:5席
-//広島県:6席
-//山口県:3席
-//徳島県:2席
-//香川県:3席
-//愛媛県:3席
-//高知県:2席
-//福岡県:11席
-//佐賀県:2席
-//長崎県:3席
-//熊本県:4席
-//大分県:3席
-//宮崎県:3席
-//鹿児島県:4席
-//沖縄県:3席
-//289
+}

@@ -2,43 +2,27 @@ package dto;
 
 import java.io.Serializable;
 
+//値を保持するbeansクラス
 public class SeatSearchBeans implements Serializable {
 
 	//フィールドをprivate修飾子でカプセル化
-	private String answer = "";
+	private String msg;
+	private String[] seat;
 
-	private String[] Seat = new String[46];
 
-	//	public String getSelect(int id) {
-	//	    return Seat[id];
-	//}
-	public String[] getSelect() {
-		return Seat;
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	public String[] getSeat() {
+		return seat;
+	}
+	public void setSeat(String[] seat) {
+		this.seat = seat;
 	}
 
-	public void setSelect(String[] select) {
-		this.Seat = select;
-	}
 
-	//引数の無いデフォルトコンストラクタ
-	public SeatSearchBeans() {
-
-	}
-
-	public SeatSearchBeans(String msg) {
-		this.answer = msg;
-	}
-
-	public SeatSearchBeans(String pascalBeans, String msg) {
-
-	}
-
-	public String getAnswer() {
-		return this.answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
 
 }

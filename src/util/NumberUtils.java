@@ -7,7 +7,6 @@ public class NumberUtils {
 		if ("".equals(str) || str == null) {
 			return false;
 		}
-
 		try {
 			//strをint型に変換する事で数字以外が入力された時にキャッチする。
 			Integer.parseInt(str);
@@ -18,4 +17,3 @@ public class NumberUtils {
 	}
 
 }
-
