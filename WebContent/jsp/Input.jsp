@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<jsp:useBean id="pascalBeans" class="dto.PascalBeans" scope="request" />
+<jsp:useBean id="pascalBeans" class="dto.PascalBeans" scope="request" />
+<jsp:useBean id="seatLinearSearchBeans" class="dto.SeatSearchBeans"
+	scope="request" />
+<jsp:useBean id="seatBinarySearchBeans" class="dto.SeatSearchBeans"
+	scope="request" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +39,7 @@
 		method="post">
 		並べる数<input type="text" name="listNumber" value="" /> <input
 			type="submit" value="計算" />
+
 		<p>${Q3Error}</p>
 		<p>${Q3Answer}</p>
 	</form>
@@ -53,9 +58,45 @@
 
 	<form action="http://localhost:8080/Test/PascalCountController"
 		method="post">
-		パスカルの三角形の段数を入力してください<input type="text" name="stageNumber" value="" /> <input
-			type="submit" value="計算" />
+		パスカルの三角形の段数を入力してください<input type="text" name="stageNumber" value="" />
+		<input type="submit" value="計算" />
 	</form>
 	<p>${pascalBeans.answer}</p>
+
+	<p>Q10.アダムズ方式で議席数を計算せよ！</p>
+
+
+	<form action="http://localhost:8080/Test/SeatLinearSearchController"
+		method="post">
+		<p>以下のフォームに全体の議席数を入力してください</p>
+		<input type="text" name="SeatNumber" value="" /> <input type="submit"
+			value="線形探索による計算" />
+	</form>
+	<p>${seatLinearSearchBeans.msg}</p>
+	<%
+		String[] linearSeat = seatLinearSearchBeans.getSeat();
+		if (linearSeat != null) {
+			for (int i = 0; i < linearSeat.length - 1; i++) {
+				out.println(linearSeat[i]);
+			}
+		}
+	%>
+
+	<form action="http://localhost:8080/Test/SeatBinarySearchController"
+		method="post">
+		<input type="text" name="SeatNumber" value="" /> <input type="submit"
+			value="二分探索による計算" />
+	</form>
+
+	<p>${seatBinarySearchBeans.msg}</p>
+
+	<%
+		String[] binarySeat = seatBinarySearchBeans.getSeat();
+		if (binarySeat != null) {
+			for (int i = 0; i < binarySeat.length - 1; i++) {
+				out.println(binarySeat[i]);
+			}
+		}
+	%>
+
 </body>
-</html>
