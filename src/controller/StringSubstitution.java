@@ -17,7 +17,7 @@ public class StringSubstitution {
 
 		try {
 			// ファイルのパスを指定する
-			File file = new File("C:\\Users\\t_omu\\Desktop\\Test\\input.txt");
+			File file = new File("C:\\Users\\endo\\Desktop\\StringSubstitution\\test1.txt");
 			//この抽象パス名fileが示すファイルまたはディレクトリが存在する場合はtrue、そうでない場合はfalse
 			if (!file.exists()) {
 				System.out.print("ファイルが存在しません");
@@ -29,7 +29,7 @@ public class StringSubstitution {
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 
 			//置換した結果を出力するための新しいファイルを作成
-			File newfile = new File("C:\\Users\\t_omu\\Desktop\\Test\\output.txt");
+			File newfile = new File("C:\\Users\\endo\\Desktop\\StringSubstitution\\t.txt");
 
 			PrintWriter pw = new PrintWriter(
 					new BufferedWriter(new OutputStreamWriter(new FileOutputStream(newfile), "UTF-8")));
