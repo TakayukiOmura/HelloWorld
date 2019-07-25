@@ -59,12 +59,6 @@ public class FileSearch {
 				String changedName = fileName.replace(".txt", "Replaced.txt");
 				System.out.println(pathParentName + "\\" + changedName);
 
-				//String fileName = filePath.getName();
-				//String passName = filePath.getPath();
-				//String kakutyoigai = fileName.substring(3);
-				//String data2 = fileName.replace(".txt", "Replaced.txt");
-				//String pathname = fileName.replace(".txt", "Replaced.txt");
-
 				//置換した結果を出力するための新しいファイルを作成
 				File newfile = new File(pathParentName +"\\"+changedName);
 				//System.out.println("パス"+filePath.getPath());
@@ -98,7 +92,7 @@ public class FileSearch {
 			e.printStackTrace();
 
 		}
-		return "";
+	return null;
 
 	}
 
